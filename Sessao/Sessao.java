@@ -17,7 +17,7 @@ public class Sessao {
     }
 
     public void visualizarSessao() {
-        System.out.println("Ingressos Disponiveis" + ingressosDisponiveis);
+        System.out.println("Ingressos Disponiveis:  " + ingressosDisponiveis);
         System.out.println("Data: " + data);
         System.out.println("Hora: " + hora);
         System.out.println("Filme: " + filme);
