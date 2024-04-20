@@ -36,15 +36,18 @@ public class Ingresso {
         lista.add("ingresso");
         lista.add("ingresso");
         for(int i = 1 ; i <= lista.size(); i++){
-            System.out.println("\n\n| Filme:  " + filme         
-            + "\n---------------------------------------|\n" +
-          "| CLiente:  " +   nome
-            + "\n---------------------------------------|\n"
-         + "| Tipo de Ingreso:  " +   tipoIngresso
-            + "\n---------------------------------------|\n"
-        + "| Data e Hora:  " + data + "  |   " + hora + "\n\n");
-        }
+          System.out.println("\n\n---------------------------------------|\n" +"| Filme:  " + filme         
+          + "\n---------------------------------------|\n" +
+        "| Cliente:  " +   nome
+          + "\n---------------------------------------|\n"
+       + "| Tipo de Ingreso:  " +   tipoIngresso
+          + "\n---------------------------------------|\n"
+      + "| Data e Hora:  " + data + "  |   " + hora
+        + "\n---------------------------------------|\n" +
+      "| Preco do ingresso: " + precoIngresso 
+       + "\n---------------------------------------|\n");
     }
+  }
 
     public void excluirIngresso(){
         System.out.println("Ingresso excluido com sucesso");
