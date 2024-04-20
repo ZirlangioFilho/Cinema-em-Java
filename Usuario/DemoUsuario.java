@@ -6,20 +6,55 @@ public class DemoUsuario {
 
         Scanner scan = new Scanner(System.in);
 
-        Usuario usuario = new Usuario("Rodrigo", "joserodrigo2@gmail.com", "79931",
-                "gamerzin", "bobo123", true);
+        Usuario usuario = new Usuario("", "", "",
+                "", "", true);
 
-        usuario.criarPerfil(scan);
+        boolean continuar = true;
 
-        usuario.editarPerfil(scan);
+        while (continuar) {
+            System.out.println("Escolha uma opção:");
+            System.out.println("1. Criar Perfil");
+            System.out.println("2. Editar Perfil");
+            System.out.println("3. Excluir Perfil");
+            System.out.println("4. Listar Perfis");
+            System.out.println("5. Visualizar Perfil");
+            System.out.println("0. Sair");
 
-        usuario.excluirPerfil(scan);
+            int escolha = scan.nextInt();
+            scan.nextLine();
 
-        usuario.listarPerfis();
+            switch (escolha) {
+                case 1:
+                    usuario.criarPerfil(scan);
+                    System.out.println("Perfil criado com sucesso!");
+                    break;
+                case 2:
+                    usuario.editarPerfil(scan);
+                    break;
 
-        usuario.visualizarPerfil();
+                case 3:
+                    usuario.excluirPerfil(scan);
+                    break;
+
+                case 4:
+                    usuario.listarPerfis();
+                    break;
+
+                case 5:
+                    usuario.visualizarPerfil(scan);
+                    break;
+
+                case 0:
+                    continuar = false;
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
+            }
+        }
 
         scan.close();
-
+        System.out.println("Programa encerrado.");
     }
 }
