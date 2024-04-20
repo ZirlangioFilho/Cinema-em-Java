@@ -3,7 +3,8 @@ import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedWriter;
-import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Usuario {
     private String nomeCliente;
@@ -24,6 +25,9 @@ public class Usuario {
 
     // criar Perfil
     public void criarPerfil(Scanner scan) throws IOException {
+        ArrayList<String> perfis = new ArrayList<String>(20);
+        int recebeConfirm;
+
         System.out.println("\nCriacao do Perfil\n");
         System.out.println("Qual seu nome?\n");
         nomeCliente = scan.nextLine();
@@ -33,8 +37,20 @@ public class Usuario {
         user = scan.nextLine();
         System.out.println("Qual a senha de acesso?\n");
         senha = scan.nextLine();
-        System.out.println("Voce eh Gerente?\n True | False");
-        ehGerente = scan.nextBoolean();
+        System.out.println("Voce eh Gerente?\n 0 para 'nao' | 1 para 'sim'");
+
+        recebeConfirm = scan.nextInt();
+        switch (recebeConfirm) {
+            case 0:
+                ehGerente = false;
+                break;
+            case 1:
+                ehGerente = true;
+                break;
+
+            default:
+                break;
+        }
 
         // id gerado aleatório
         id = nomeCliente.substring(2) + user.substring(2) + senha.substring(2);
@@ -42,26 +58,21 @@ public class Usuario {
 
         System.out.println("Criando Perfil\n");
 
+        String separa = ";";
+
+        perfis.add(nomeCliente + separa + email + separa + user + separa + senha + separa + id + separa + ehGerente);
+
         // enviar perfil do usuario para um arquivo txt
 
         FileWriter arq = new FileWriter(
                 "usuarios.txt", true);
 
         try {
+
             BufferedWriter Arq = new BufferedWriter(arq);
 
-            Arq.write("Usuario: " + nomeCliente);
-            Arq.newLine();
-            Arq.write("Email: " + email);
-            Arq.newLine();
-            Arq.write("User: " + user);
-            Arq.newLine();
-            Arq.write("Senha: " + senha);
-            Arq.newLine();
-            Arq.write("ID " + id);
-            Arq.newLine();
-            Arq.write("Gerente? " + ehGerente);
-            System.out.println("\n");
+            Arq.write(nomeCliente + separa + email + separa + user +
+                    separa + senha + separa + id + separa + ehGerente);
 
             Arq.flush();
             Arq.close();
@@ -84,9 +95,9 @@ public class Usuario {
 
             if (i == 1) {
                 System.out.println("\nSeu nome atual eh " + nomeCliente);
-                nomeCliente = scan.nextLine();
 
-                System.out.println("\nSeu novo nome eh " + email);
+                nomeCliente = scan.nextLine();
+                System.out.println("\nSeu novo nome eh " + nomeCliente);
 
             } else if (i == 2) {
                 System.out.println("\nSeu email atual eh " + email);
@@ -112,18 +123,19 @@ public class Usuario {
 
     // excluir Perfil
     public void excluirPerfil(Scanner scan) {
-        String confirm;
+        int confirm;
 
         System.out.println("Tem certeza que deseja excluir?\n");
-        System.out.println("Digite 'sim' para confirmar ou 'nao' para cancelar\n");
-        confirm = scan.nextLine();
+        System.out.println("Digite '1' para confirmar ou '0' para cancelar\n");
+        confirm = scan.nextInt();
 
         switch (confirm) {
-            case "sim":
+            case 1:
+                System.out.println("Excluindo Perfil... ");
 
                 break;
-
-            case "nao":
+            case 0:
+                System.out.println("Cancelando exclusao ");
 
                 break;
 
@@ -135,18 +147,28 @@ public class Usuario {
     }
 
     // listar Perfil
-    public void listarPerfis() {
-        // acessar arquivo
-        BufferedReader read = new BufferedReader(arq);
+    public void listarPerfis() throws IOException {
+
     }
 
     // visualizar Perfil
     public void visualizarPerfil() {
-        System.out.println("Nome: " + nomeCliente);
-        System.out.println("Email: " + email);
-        System.out.println("id: " + id);
-        System.out.println("user: " + user);
-        System.out.println("senha: " + senha);
+        // ArrayList<String> perfis = new ArrayList<String>(20);
+
+        try {
+            File lista = new File("usuarios.txt");
+
+            Scanner scann = new Scanner(lista);
+
+            while (scann.hasNextLine()) {
+                System.out.println(scann.nextLine());
+            }
+
+            scann.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }
