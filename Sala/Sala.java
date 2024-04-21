@@ -12,8 +12,7 @@ public class Sala {
         this.acessibilidade = acessibilidade;
     }
 
-    public void criarSala() {
-        Scanner sc = new Scanner(System.in);
+    public void criarSala(Scanner sc) {
 
         System.out.println("Numero da sala: ");
         numSala = sc.nextInt();
@@ -26,11 +25,9 @@ public class Sala {
         System.out.println("Acessibilidade: ");
         acessibilidade = sc.nextInt();
         sc.nextLine();
-
-        sc.close();
     }
 
-    public void exclurSala() {
+    public void excluirSala(Scanner sc) {
         ArrayList<Sala> salas = new ArrayList<>();
         Sala[] salasArray = {
                 new Sala(101, 50, 1),
@@ -52,8 +49,8 @@ public class Sala {
         }
     }
 
-    public void editarSala(ArrayList<Sala> salas) {
-        Scanner sc = new Scanner(System.in);
+    public void editarSala(Scanner sc) {
+        ArrayList<Sala> salas = new ArrayList<>();
 
         System.out.println("número da sala que deseja editar: ");
         int num = sc.nextInt();
@@ -65,8 +62,6 @@ public class Sala {
                 break;
             }
         }
-
-        sc.close();
 
         if (salaEditar == null) {
             System.out.println("Sala com número " + num + " não encontrada.");
@@ -102,7 +97,7 @@ public class Sala {
         System.out.println(" - Acessibilidade: " + acessibilidade);
     }
 
-    public void listarSala() {
+    public void listarSala(Scanner sc) {
         ArrayList<Sala> salas = new ArrayList<>();
         Sala[] salasArray = {
                 new Sala(101, 50, 1),

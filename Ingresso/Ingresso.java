@@ -26,7 +26,7 @@ public class Ingresso {
     this.precoIngresso = precoIngresso;
   }
 
-  public void vizualizarIngresso() {
+  public void vizualizarIngresso(Scanner sc) {
     System.out.println("\n\n| Filme:  " + filme
         + "\n---------------------------------------|\n" +
         "| Cliente:  " + nome
@@ -36,9 +36,9 @@ public class Ingresso {
         + "| Data e Hora:  " + data + "  |   " + hora + "\n\n");
   }
 
-  public void listarIngresso() {
+  public void listarIngresso(Scanner sc) {
     ArrayList<String> lista = new ArrayList<>();
-    String arquivoIng = "ingresso.txt";
+    String arquivoIng = "ingressos.txt";
 
     try (FileReader arquivo = new FileReader(arquivoIng);
         BufferedReader leitor = new BufferedReader(arquivo)) {
@@ -80,8 +80,7 @@ public class Ingresso {
     }
   }
 
-  public void excluirIngresso() {
-    Scanner sc = new Scanner(System.in);
+  public void excluirIngresso(Scanner sc) {
     System.out.println("Digite o nome do Cliente do Ingresso que deseja excluir: ");
     String idStr = sc.nextLine();
 
@@ -96,14 +95,13 @@ public class Ingresso {
         String linha = leitor.nextLine();
         String[] campos = linha.split(",");
 
-        if (campos.length >= 6 && campos[2].equals(idStr)) {
+        if (campos.length >= 6 && campos[1].equals(idStr)) {
           encontrado = true;
         } else {
           ingressos.add(linha);
         }
       }
       leitor.close();
-      sc.close();
 
       if (!encontrado) {
         System.out.println("Nome " + idStr + " não encontrado");
@@ -124,9 +122,7 @@ public class Ingresso {
     }
   }
 
-  public void criarIngresso() {
-    Scanner sc = new Scanner(System.in);
-
+  public void criarIngresso(Scanner sc) {
     System.out.println("Digite o nome do filme:");
     filme = sc.nextLine();
 
@@ -162,12 +158,9 @@ public class Ingresso {
       e.printStackTrace();
       System.out.println("Arquivo nao encontrado");
     }
-    sc.close();
   }
 
-  public void editarPreco() {
-    Scanner sc = new Scanner(System.in);
-
+  public void editarPreco(Scanner sc) {
     System.out.println("Digite o nome do dono do Ingresso que deseja editar: ");
     String idStr = sc.nextLine();
 
@@ -244,6 +237,5 @@ public class Ingresso {
     } catch (FileNotFoundException e) {
       System.out.println("Arquivo não encontrado: ");
     }
-    sc.close();
   }
 }

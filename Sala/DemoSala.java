@@ -21,15 +21,19 @@ public class DemoSala {
 
             switch (escolha) {
                 case 1:
-                    criarSala();
+                    sala.criarSala(sc);
                     break;
                 case 2:
+                    sala.editarSala(sc);
                     break;
                 case 3:
+                    sala.excluirSala(sc);
                     break;
                 case 4:
+                    sala.listarSala(sc);
                     break;
                 case 5:
+                    sala.visualizarSala();
                     break;
 
                 case 0:

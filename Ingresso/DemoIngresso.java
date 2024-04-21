@@ -4,7 +4,7 @@ public class DemoIngresso {
     public static void main(String[] args) {
         Ingresso ingresso = new Ingresso("", "", "", "", "", 0);
 
-        Scanner scan = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         boolean continuar = true;
 
         while (continuar) {
@@ -16,23 +16,24 @@ public class DemoIngresso {
             System.out.println("5. Visualizar Ingresso");
             System.out.println("0. Sair");
 
-            int escolha = scan.nextInt();
+            int escolha = sc.nextInt();
+            sc.nextLine();
 
             switch (escolha) {
                 case 1:
-                    ingresso.criarIngresso();
+                    ingresso.criarIngresso(sc);
                     break;
                 case 2:
-                    ingresso.editarPreco();
+                    ingresso.editarPreco(sc);
                     break;
                 case 3:
-                    ingresso.excluirIngresso();
+                    ingresso.excluirIngresso(sc);
                     break;
                 case 4:
-                    ingresso.listarIngresso();
+                    ingresso.listarIngresso(sc);
                     break;
                 case 5:
-                    ingresso.vizualizarIngresso();
+                    ingresso.vizualizarIngresso(sc);
                     break;
                 case 0:
                     continuar = false;
@@ -43,7 +44,7 @@ public class DemoIngresso {
             }
         }
 
-        scan.close();
+        sc.close();
         System.out.println("Programa encerrado.");
     }
 }
