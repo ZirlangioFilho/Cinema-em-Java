@@ -59,7 +59,7 @@ public class Usuario {
         // criacao do perfil
         System.out.println("Criando Perfil");
 
-        // perfil para arraylist com string separando por sessoes
+        // perfil para string com string separando por sessoes
         String separa = ";";
 
         String perfilStr = nomeCliente + separa + email + separa + user + separa + senha + separa + id + separa
@@ -255,7 +255,6 @@ public class Usuario {
                         System.out.println("  Gerente: " + (Boolean.parseBoolean(campos[5]) ? "Sim" : "Não"));
                         break;
                     }
-
                     if (!encontrado) {
                         System.out.println("Perfil com ID " + idStr + " não existente.");
                     }
@@ -291,5 +290,4 @@ public class Usuario {
     public Boolean getEhGerente() {
         return ehGerente;
     }
-
 }

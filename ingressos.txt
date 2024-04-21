@@ -1,0 +1,6 @@
+Hora,lucas,completo,19/04/2024,21:44,30.0
+Hora,Lucas,Completo,19/04/2024,21:44,39.0
+Hora de ma,rodrig,inteiro,19/04/2024,21:44,39.0
+Hora da Hora,Rodrigo,inteira,19/04/2024,,29.0
+Hora,Loc,tira,12,23,29.9
+hora,lc,ttipo,19,34,34.0
